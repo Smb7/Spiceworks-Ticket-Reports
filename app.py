@@ -27,9 +27,7 @@ def getNumberofTickets():
 
     get_DateInput = int(input("Enter date to search: "))
 
-    assignee_shane = "Shane Brennan"
-    assignee_matt = "Matt Robinson"
-    assignee_kyle = "Kyle Martin"
+    assignee_user = "user here"
     today = datetime.now()
     last_month = today - timedelta(days=get_DateInput)
 
@@ -42,9 +40,7 @@ def getNumberofTickets():
         assignee_idx = fields.index("assignee")
         date_idx = fields.index("created")
 
-        shane_tickets = 0
-        matt_tickets = 0
-        kyle_tickets = 0
+        user_tickets = 0
 
         for row in csvreader:
             assignee = row[assignee_idx]
@@ -55,21 +51,11 @@ def getNumberofTickets():
             except ValueError:
                 continue
 
-            if assignee == assignee_shane and ticket_date >= last_month:
-                shane_tickets += 1
-                rows.append(row)
-            
-            elif assignee == assignee_matt and ticket_date >= last_month:
-                matt_tickets += 1
-                rows.append(row)
-
-            elif assignee == assignee_kyle and ticket_date >= last_month:
-                kyle_tickets += 1
+            if assignee == assignee_user and ticket_date >= last_month:
+                user_tickets += 1
                 rows.append(row)
         
-        print(f"Total number of tickets assigned to {assignee_shane} in the 30 days: {shane_tickets}")
-        print(f"Total number of tickets assigned to {assignee_matt} in the 30 days: {matt_tickets}")
-        print(f"Total number of tickets assigned to {assignee_kyle} in the 30 days: {kyle_tickets}")
+        print(f"Total number of tickets assigned to {assignee_user} in the 30 days: {user_tickets}")
 
 # create a function that gets all the response time and close time 
 def getResponseTime():
